@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio One Branch 2 — Unisex Salon, Panvel</title>
+<meta name="description" content="Studio One Branch 2 — Unisex hair, colour, spa &amp; grooming studio in Sector 19, Panvel. 4.9★ rated, 118 reviews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1420;
+    --ink-soft:#2E2432;
+    --paper:#F7F1E7;
+    --mist:#EEE4D4;
+    --rose:#B23A54;
+    --rose-deep:#8C2B41;
+    --copper:#C9873F;
+    --sage:#77855A;
+    --cream-line:rgba(247,241,231,0.14);
+    --ink-line:rgba(27,20,32,0.12);
+    --shadow: 0 20px 50px rgba(27,20,32,0.16);
+    --ease: cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-size:12px;
+    color:var(--rose);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px;
+    height:1px;
+    background:var(--rose);
+    display:inline-block;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--rose);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* ---------- Swatch strip (signature motif) ---------- */
+  .swatch-strip{
+    display:flex;
+    height:10px;
+    width:100%;
+  }
+  .swatch-strip span{flex:1;}
+  .sw-1{background:#1B1420;}
+  .sw-2{background:#8C2B41;}
+  .sw-3{background:#B23A54;}
+  .sw-4{background:#C9873F;}
+  .sw-5{background:#D9B88C;}
+  .sw-6{background:#77855A;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(247,241,231,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--ink-line);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{display:flex; flex-direction:column; line-height:1;}
+  .logo .name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:22px;
+    letter-spacing:0.01em;
+  }
+  .logo .sub{
+    font-family:'Space Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.16em;
+    color:var(--rose-deep);
+    margin-top:4px;
+  }
+  nav.links{
+    display:flex;
+    gap:34px;
+    align-items:center;
+  }
+  nav.links a{
+    font-size:14px;
+    font-weight:500;
+    position:relative;
+    padding:4px 0;
+  }
+  nav.links a:not(.btn)::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0%;
+    height:2px;
+    background:var(--rose);
+    transition:width .3s var(--ease);
+  }
+  nav.links a:not(.btn):hover::after{width:100%;}
+
+  .btn{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:11px 20px;
+    border-radius:3px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+  }
+  .btn-primary{
+    background:var(--rose);
+    color:var(--paper);
+    box-shadow:0 8px 20px rgba(178,58,84,0.28);
+  }
+  .btn-primary:hover{background:var(--rose-deep); transform:translateY(-2px);}
+  .btn-outline{
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink); color:var(--paper); transform:translateY(-2px);}
+
+  .nav-mobile-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 70px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(40px, 5.6vw, 74px);
+    font-weight:600;
+    line-height:1.02;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--rose);
+  }
+  .hero p.lede{
+    font-size:18px;
+    max-width:46ch;
+    color:var(--ink-soft);
+    margin:26px 0 34px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+
+  .rating-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:26px;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    background:var(--mist);
+    padding:8px 14px 8px 10px;
+    border-radius:30px;
+  }
+  .stars{color:var(--copper); letter-spacing:1px;}
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:6px;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 100% at 15% 0%, #3a2a35 0%, transparent 55%),
+      linear-gradient(160deg, #1B1420 0%, #2E2432 38%, #8C2B41 78%, #C9873F 100%);
+    box-shadow:var(--shadow);
+  }
+  .hero-visual::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, transparent 0 38px, rgba(247,241,231,0.055) 38px 39px);
+  }
+  .hero-visual .tag{
+    position:absolute;
+    left:22px; bottom:22px;
+    color:var(--paper);
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    opacity:.85;
+  }
+  .hero-visual .big-letter{
+    position:absolute;
+    right:14px; top:8px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:180px;
+    color:rgba(247,241,231,0.14);
+    line-height:1;
+  }
+
+  .cut-divider{
+    height:34px;
+    width:100%;
+    background:var(--paper);
+    clip-path:polygon(0 100%, 4% 30%, 8% 100%, 12% 30%, 16% 100%, 20% 30%, 24% 100%, 28% 30%, 32% 100%, 36% 30%, 40% 100%, 44% 30%, 48% 100%, 52% 30%, 56% 100%, 60% 30%, 64% 100%, 68% 30%, 72% 100%, 76% 30%, 80% 100%, 84% 30%, 88% 100%, 92% 30%, 96% 100%, 100% 30%, 100% 100%);
+  }
+  .section-dark .cut-divider{background:var(--ink);}
+
+  /* ---------- reveal ---------- */
+  [data-reveal]{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .7s var(--ease), transform .7s var(--ease);
+  }
+  [data-reveal].is-visible{opacity:1; transform:none;}
+
+  /* ---------- About / stats ---------- */
+  .about{padding:86px 0 70px;}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .about h2{font-size:clamp(30px,3.4vw,44px); font-weight:600; line-height:1.08;}
+  .about p{color:var(--ink-soft); font-size:16.5px; max-width:52ch; margin-top:18px;}
+
+  .stat-row{display:flex; flex-direction:column; gap:0;}
+  .stat{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:22px 0;
+    border-top:1px solid var(--ink-line);
+  }
+  .stat:last-child{border-bottom:1px solid var(--ink-line);}
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:40px;
+    color:var(--rose);
+  }
+  .stat .label{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    text-align:right;
+    max-width:220px;
+  }
+
+  /* ---------- Services ---------- */
+  .services{
+    background:var(--ink);
+    color:var(--paper);
+    padding:90px 0 100px;
+  }
+  .services .eyebrow{color:var(--copper);}
+  .services .eyebrow::before{background:var(--copper);}
+  .services h2{color:var(--paper); font-size:clamp(30px,3.4vw,44px); font-weight:600; max-width:16ch; margin-bottom:50px;}
+
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:rgba(247,241,231,0.14);
+    border:1px solid rgba(247,241,231,0.14);
+  }
+  .service-card{
+    background:var(--ink);
+    padding:34px 28px;
+    transition:background .3s var(--ease);
+    position:relative;
+  }
+  .service-card:hover{background:var(--ink-soft);}
+  .service-card .icon{
+    width:34px; height:34px;
+    margin-bottom:22px;
+    color:var(--rose);
+  }
+  .service-card h3{
+    color:var(--paper);
+    font-size:20px;
+    font-weight:600;
+    font-style:italic;
+    margin-bottom:10px;
+  }
+  .service-card p{
+    color:rgba(247,241,231,0.62);
+    font-size:14.5px;
+    margin:0;
+  }
+
+  /* ---------- Lookbook / gallery ---------- */
+  .lookbook{padding:96px 0 90px;}
+  .lookbook h2{font-size:clamp(30px,3.4vw,44px); font-weight:600; margin-bottom:46px; max-width:18ch;}
+  .look-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:14px;
+  }
+  .look-card{
+    aspect-ratio:3/4;
+    border-radius:4px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:14px;
+    transition:transform .4s var(--ease);
+  }
+  .look-card:hover{transform:translateY(-8px);}
+  .look-card span{
+    font-family:'Space Mono', monospace;
+    font-size:10.5px;
+    color:var(--paper);
+    letter-spacing:0.04em;
+    text-shadow:0 1px 6px rgba(0,0,0,0.35);
+  }
+  .l1{background:linear-gradient(155deg,#3a2320,#1B1420 70%);}
+  .l2{background:linear-gradient(155deg,#8C2B41,#5c1c2c 70%);}
+  .l3{background:linear-gradient(155deg,#C9873F,#8f5c22 70%);}
+  .l4{background:linear-gradient(155deg,#D9B88C,#a9865c 70%);}
+  .l5{background:linear-gradient(155deg,#77855A,#4c5638 70%);}
+  .l6{background:linear-gradient(155deg,#B23A54,#1B1420 75%);}
+
+  /* ---------- Reviews ---------- */
+  .reviews{
+    background:var(--mist);
+    padding:96px 0;
+  }
+  .reviews-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    margin-bottom:50px;
+    flex-wrap:wrap;
+  }
+  .reviews h2{font-size:clamp(30px,3.4vw,44px); font-weight:600; max-width:16ch;}
+  .score-block{
+    text-align:right;
+    font-family:'Space Mono', monospace;
+  }
+  .score-block .big{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:56px;
+    color:var(--rose);
+    line-height:1;
+  }
+  .score-block .stars{display:block; margin:6px 0;}
+  .score-block small{color:var(--ink-soft); font-size:12px;}
+
+  .review-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .review-card{
+    background:var(--paper);
+    border:1px solid var(--ink-line);
+    border-radius:6px;
+    padding:28px 26px;
+  }
+  .review-card .stars{color:var(--copper); font-size:13px; margin-bottom:14px; display:block;}
+  .review-card p{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .review-card .who{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink);
+  }
+  .reviews .note{
+    margin-top:26px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    font-family:'Space Mono', monospace;
+  }
+
+  /* ---------- Visit ---------- */
+  .visit{padding:96px 0 100px;}
+  .visit-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:60px;
+    align-items:stretch;
+  }
+  .visit h2{font-size:clamp(30px,3.4vw,44px); font-weight:600; margin-bottom:26px;}
+  .visit-info p{color:var(--ink-soft); font-size:16px; margin:0 0 22px; max-width:40ch;}
+  .info-line{
+    display:flex;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid var(--ink-line);
+    align-items:flex-start;
+  }
+  .info-line:last-of-type{border-bottom:1px solid var(--ink-line); margin-bottom:26px;}
+  .info-line .k{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--rose);
+    width:90px;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .info-line .v{font-size:15.5px; color:var(--ink);}
+  .info-line .v a:hover{color:var(--rose);}
+
+  .map-box{
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    min-height:360px;
+    border:1px solid var(--ink-line);
+  }
+  .map-box iframe{width:100%; height:100%; min-height:360px; border:0; display:block;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(247,241,231,0.75);
+    padding:56px 0 30px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:30px;
+    padding-bottom:34px;
+    border-bottom:1px solid rgba(247,241,231,0.14);
+    margin-bottom:22px;
+  }
+  footer .logo .name{color:var(--paper);}
+  .footer-links{display:flex; gap:30px; flex-wrap:wrap;}
+  .footer-links a{font-size:13.5px;}
+  .footer-links a:hover{color:var(--rose);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    color:rgba(247,241,231,0.45);
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    nav.links{
+      position:fixed;
+      inset:64px 0 auto 0;
+      background:var(--paper);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:22px 32px 30px;
+      gap:20px;
+      border-bottom:1px solid var(--ink-line);
+      transform:translateY(-130%);
+      transition:transform .35s var(--ease);
+    }
+    nav.links.open{transform:translateY(0);}
+    .nav-mobile-toggle{
+      display:flex;
+      background:none; border:none; cursor:pointer;
+      width:34px; height:34px; flex-direction:column; justify-content:center; gap:6px;
+    }
+    .nav-mobile-toggle span{width:100%; height:2px; background:var(--ink); display:block;}
+
+    .hero-grid, .about-grid, .visit-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1; max-height:340px;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .look-grid{grid-template-columns:repeat(3,1fr);}
+    .review-grid{grid-template-columns:1fr;}
+    .reviews-top{flex-direction:column; align-items:flex-start;}
+    .score-block{text-align:left;}
+  }
+  @media (max-width: 560px){
+    .wrap{padding:0 20px;}
+    .service-grid{grid-template-columns:1fr;}
+    .look-grid{grid-template-columns:repeat(2,1fr);}
+    .hero{padding:70px 0 50px;}
+    .hero-visual .big-letter{font-size:120px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <div class="logo">
+      <span class="name">Studio One</span>
+      <span class="sub">BRANCH 02 — PANVEL</span>
+    </div>
+    <nav class="links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit Us</a>
+      <a href="tel:+919987441453" class="btn btn-primary">Call Now</a>
+    </nav>
+    <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div data-reveal>
+      <div class="rating-badge">
+        <span class="stars">★★★★★</span>
+        <span>4.9 · 118 Google Reviews</span>
+      </div>
+      <h1>Hair, colour &amp; care —<br><em>cut for everyone.</em></h1>
+      <p class="lede">Studio One Branch 2 is Sector 19's unisex studio for precision cuts, colour, spa, and grooming. One chair, every style, no side of the salon roped off.</p>
+      <div class="hero-ctas">
+        <a href="tel:+919987441453" class="btn btn-primary">Call to Book — 099874 41453</a>
+        <a href="#visit" class="btn btn-outline">Get Directions</a>
+      </div>
+    </div>
+    <div class="hero-visual" data-reveal>
+      <span class="big-letter">S1</span>
+      <span class="tag">Studio One · Sector 19, Panvel</span>
+    </div>
+  </div>
+</section>
+<div class="swatch-strip"><span class="sw-1"></span><span class="sw-2"></span><span class="sw-3"></span><span class="sw-4"></span><span class="sw-5"></span><span class="sw-6"></span></div>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div data-reveal>
+      <div class="eyebrow">The Studio</div>
+      <h2>One studio, every head in the room.</h2>
+      <p>No separate menus, no separate prices for who's in the chair. Our stylists at Studio One Branch 2 work across cut, colour, texture, and grooming for men, women, and everyone in between — trained on the same standard, for the same result: you, leaving looking like you meant it.</p>
+    </div>
+    <div class="stat-row" data-reveal>
+      <div class="stat"><span class="num">118</span><span class="label">Total Google Reviews</span></div>
+      <div class="stat"><span class="num">92%</span><span class="label">Rated the Full Five Stars</span></div>
+      <div class="stat"><span class="num">Unisex</span><span class="label">One Studio, All Are Welcome</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-dark"><div class="cut-divider"></div></div>
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="eyebrow">Services</div>
+    <h2 data-reveal>Book by the result you want, not the department.</h2>
+    <div class="service-grid">
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M20 4 8.5 12 20 20M8.5 12 4.5 12"/></svg>
+        <h3>Cut &amp; Styling</h3>
+        <p>Precision cuts, blow-dry finishes, and styling for every hair type and length.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9Z"/></svg>
+        <h3>Colour &amp; Highlights</h3>
+        <p>Global colour, balayage, and highlight work, matched to your skin tone and upkeep.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h16M4 7h16M4 17h10"/></svg>
+        <h3>Keratin &amp; Smoothening</h3>
+        <p>Frizz control and smoothening treatments built for humidity that doesn't quit.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 4v16M4 9h4"/></svg>
+        <h3>Bridal &amp; Party Look</h3>
+        <p>Occasion hair and makeup, planned around your outfit and your event's timeline.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        <h3>Facial &amp; Cleanup</h3>
+        <p>Skin treatments and cleanups suited to Panvel's weather, not a one-size routine.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3v6a6 6 0 0 0 12 0V3M9 21h6M12 15v6"/></svg>
+        <h3>Hair Spa &amp; Treatment</h3>
+        <p>Deep conditioning and scalp treatments for hair that's tired, not just dry.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20c2-5 4-7 8-7s6 2 8 7M9 10a3 3 0 1 1 6 0c0 2-1 4-3 5-2-1-3-3-3-5Z"/></svg>
+        <h3>Beard Grooming</h3>
+        <p>Shape-ups, beard spa, and grooming for a line that holds its shape.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-2 3-3 4-3 6a3 3 0 0 0 6 0c0-2-1-3-3-6Z"/><path d="M6 15c1-2 3-3 6-3s5 1 6 3"/></svg>
+        <h3>Manicure &amp; Pedicure</h3>
+        <p>Nail care and hand-and-foot treatments to close out any studio visit.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4h16v4H4zM8 8v12M16 8v12M4 20h16"/></svg>
+        <h3>Consultation</h3>
+        <p>Not sure what you want? A 10-minute sit-down before any chemical service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lookbook" id="lookbook">
+  <div class="wrap">
+    <div class="eyebrow">The Lookbook</div>
+    <h2 data-reveal>A palette for every style, not just one look.</h2>
+    <div class="look-grid">
+      <div class="look-card l1" data-reveal><span>Espresso&nbsp;Balayage</span></div>
+      <div class="look-card l2" data-reveal><span>Deep&nbsp;Wine&nbsp;Colour</span></div>
+      <div class="look-card l3" data-reveal><span>Copper&nbsp;Wash</span></div>
+      <div class="look-card l4" data-reveal><span>Ash&nbsp;Blonde</span></div>
+      <div class="look-card l5" data-reveal><span>Natural&nbsp;Fade</span></div>
+      <div class="look-card l6" data-reveal><span>Rose&nbsp;Undertone</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="reviews-top">
+      <div data-reveal>
+        <div class="eyebrow">Word on the Street</div>
+        <h2>118 reviews, one habit — coming back.</h2>
+      </div>
+      <div class="score-block" data-reveal>
+        <span class="big">4.9</span>
+        <span class="stars">★★★★★</span>
+        <small>109 of 118 rated 5 stars</small>
+      </div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card" data-reveal>
+        <span class="stars">★★★★★</span>
+        <p>Been going to Studio One for over a year now — the stylists actually listen before they pick up the scissors. Consistent every visit.</p>
+        <div class="who">— Regular Client, Panvel</div>
+      </div>
+      <div class="review-card" data-reveal>
+        <span class="stars">★★★★★</span>
+        <p>Took my whole family here, different services for each of us and everyone walked out happy. That's rare to pull off in one visit.</p>
+        <div class="who">— Local Resident</div>
+      </div>
+      <div class="review-card" data-reveal>
+        <span class="stars">★★★★★</span>
+        <p>Clean, well-run studio and the colour work held up exactly as promised. Easy to book, easy to get to from Sector 19.</p>
+        <div class="who">— First-time Client</div>
+      </div>
+    </div>
+    <div class="note">Sample reviews shown for layout — swap in real quotes from your Google listing before publishing.</div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="visit-info" data-reveal>
+      <div class="eyebrow">Find Us</div>
+      <h2>Sector 19, Panvel.</h2>
+      <p>Inside Shiva Complex, opposite Baby Step — easy to spot, easy to park near. Walk in or call ahead to hold your slot.</p>
+      <div class="info-line">
+        <span class="k">Address</span>
+        <span class="v">Shiva Complex, near opposite Baby Step, Sector 19, Panvel, Maharashtra 410206</span>
+      </div>
+      <div class="info-line">
+        <span class="k">Phone</span>
+        <span class="v"><a href="tel:+919987441453">099874 41453</a></span>
+      </div>
+      <div class="info-line">
+        <span class="k">Hours</span>
+        <span class="v">Open daily — call ahead for today's slot</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="tel:+919987441453" class="btn btn-primary">Call Now</a>
+        <a href="https://wa.me/919987441453" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="map-box" data-reveal>
+      <iframe
+        src="https://www.google.com/maps?q=Shiva+Complex+Sector+19+Panvel+Maharashtra+410206&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Studio One Branch 2 location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="logo">
+        <span class="name">Studio One</span>
+        <span class="sub" style="color:var(--copper);">BRANCH 02 — PANVEL</span>
+      </div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#lookbook">Lookbook</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Visit Us</a>
+        <a href="tel:+919987441453">099874 41453</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Studio One Branch 2 — Unisex Salon, Shiva Complex, Sector 19, Panvel 410206</span>
+      <span>© 2026 Studio One</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
